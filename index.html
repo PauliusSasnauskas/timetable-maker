@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Timetable Generator</title>
+	<meta name="description" content="A timetable generator">
+	<meta name="author" content="Paulius Sasnauskas">
+	<style>
+		@font-face {
+			font-family: 'Lemon/Milk';
+			src: url('LEMONMILK-Medium.woff2') format('woff2'),
+				url('LEMONMILK-Medium.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+		body {
+			padding: 16px;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 16px;
+		}
+		:not(svg):not(text):not(tspan) {
+			font-family: sans-serif;
+		}
+		.flex {
+			display: flex;
+			flex-direction: row;
+			align-items: baseline;
+			margin-right: 16px;
+			gap: 8px;
+		}
+		.flex.vertical {
+			flex-direction: column;
+		}
+		.flex > span {
+			min-width: 80px;
+		}
+		.flex > input {
+			width: 60px;
+    		text-align: center;
+		}
+		.action-button {
+			margin: 10px auto;
+		}
+		.times-item > input[type="number"]{
+			width: 50px;
+		}
+		.times-item > select{
+			height: 22px;
+			color:#3d3c3e;
+			font-weight: bold;
+		}
+		.times-item > select > option {
+			color:#3d3c3e;
+			font-weight: bold;
+		}
+		
+		.color-gray{ background:#bdbdbe; }
+		.color-pink{ background:#cf9ec4; }
+		.color-green{ background:#9fc580; }
+		.color-yellow{ background:#ebda8c; }
+		.color-red{ background:#e09d85; }
+		.color-blue{ background:#82bee1; }
+	</style>
+</head>
+
+<body>
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 842 596">
+		<defs>
+			<style>
+				.background-bottom{ fill:#fbf7c6; }
+				.background{ fill:#98bfc9; }
+				.time-fade{
+					opacity:0.86;
+					mix-blend-mode:overlay;
+					font-size:228px;
+				}
+				.time-fade > g{
+					clip-path:url(#aa);
+				}
+				.time-fade > g > text {
+					transform: scale(0.583, 0.583);
+					text-anchor: middle;
+				}
+				svg text{
+					font-family:LemonMilk, 'Lemon/Milk';
+					fill:#3d3c3e;
+				}
+				.gray{ fill:#3d3c3e; }
+				.sq-text{
+					font-size:14px;
+				}
+				.sq-subtext{
+					font-size:8px;
+				}
+				.sq-gray{ fill:#bdbdbe; }
+				.sq-pink{ fill:#cf9ec4; }
+				.sq-green{ fill:#9fc580; }
+				.sq-yellow{ fill:#ebda8c; }
+				.sq-red{ fill:#e09d85; }
+				.sq-blue{ fill:#82bee1; }
+				.gray-dash{
+					stroke:#3d3c3e;
+					stroke-width:2px;
+					stroke-dasharray:12;
+				}
+				.text-white, .text-white > text{
+					font-size:17px;
+					fill:#fff;
+					text-anchor: middle;
+				}
+			</style>
+			<clipPath id="aa"><rect x="-300" y="-90" width="600" height="96" />
+		</defs>
+		<g>
+			<rect class="background-bottom" x="0" y="0" width="842" height="596" />
+			<path class="background" d="M827.19 550.3A25.191 25.191 0 0 1 825.71 558.81L823.01 566.32A18.326 18.326 0 0 1 813.29 576.27L803.53 579.73A30.55 30.55 0 0 1 796.92 581.28L793.9 581.64 23.51 581.64 20.22 580.15A4.288 4.288 0 0 1 18.46 578.67 11.177 11.177 0 0 1 16.74 574.62L14.7 564.84 14.7 34.36A10.7 10.7 0 0 0 16.27 25.86L15.2 21.34A1.949 1.949 0 0 1 16.86 18.95L25.35 17.86A7.731 7.731 0 0 0 29.13 16.29L32.51 13.64 767.94 13.64 778.66 21.12A12.583 12.583 0 0 0 788.73 23.06L800.55 20.29A16.287 16.287 0 0 1 818.27 27.88L821.11 32.7 827.19 53.28Z" />
+
+			<g class="time-fade">
+				<g transform="translate(220 185)"><text id="svg-time1">8:30</text></g>
+				<g transform="translate(315 276)"><text id="svg-time2">10:15</text></g>
+				<g transform="translate(410 367)"><text id="svg-time3">12:00</text></g>
+				<g transform="translate(505 458)"><text id="svg-time4">14:00</text></g>
+				<g transform="translate(600 549)"><text id="svg-time5">16:00</text></g>
+			</g>
+			<g class="gray-dash">
+				<line x1="88" y1=" 94" x2="768" y2="94" />
+				<line x1="88" y1="185" x2="768" y2="185" />
+				<line x1="88" y1="276" x2="768" y2="276" />
+				<line x1="88" y1="367" x2="768" y2="367" />
+				<line x1="88" y1="458" x2="768" y2="458" />
+				<line x1="88" y1="549" x2="768" y2="549" />
+			</g>
+			<g id="svg-times">
+				<!-- generated code goes here -->
+			</g>
+			<polygon class="gray" points="810.709 87.874 31.181 87.874 59.528 59.528 31.181 31.181 810.709 31.181 782.362 59.528 810.709 87.874" />
+			<g class="text-white" y="66.5">
+				<text y="66.5">
+					<tspan id="svg-dow1" x="159">Monday</tspan>
+					<tspan id="svg-dow2" x="295">Tuesday</tspan>
+					<tspan id="svg-dow3" x="431">Wednesday</tspan>
+					<tspan id="svg-dow4" x="567">Thursday</tspan>
+					<tspan id="svg-dow5" x="703">Friday</tspan>
+				</text>
+			</g>
+			<path class="gray" d="M827.717,549.193H676.086a.933.933,0,0,1-.66-1.592l26.754-26.754-25.322-25.322a.84.84,0,0,1-.194-.3l-.543-1.47a.76.76,0,0,1,.639-1.02l2.292-.226q.054-.005.108-.005H827.717Z" />
+			<text id="svg-ribbon" class="text-white" transform="translate(760 528)">2021-1</text>
+		</g>
+	</svg>
+
+	<div>
+		<div class="flex">
+			<span>Weekdays</span>
+			<input id="dow1" type="text" placeholder="Day 1" value="Monday" />
+			<input id="dow2" type="text" placeholder="Day 2" value="Tuesday" />
+			<input id="dow3" type="text" placeholder="Day 3" value="Wednesday" />
+			<input id="dow4" type="text" placeholder="Day 4" value="Thursday" />
+			<input id="dow5" type="text" placeholder="Day 5" value="Friday" />
+			<span>Ribbon</span>
+			<input id="ribbon" type="text" placeholder="Text" value="2021-1" />
+		</div>
+		<div class="flex" style="margin: 10px 0">
+			<span>Times</span>
+			<input id="time1" type="text" placeholder="Time 1" value="8:30" />
+			<input id="time2" type="text" placeholder="Time 2" value="10:15" />
+			<input id="time3" type="text" placeholder="Time 3" value="12:00" />
+			<input id="time4" type="text" placeholder="Time 4" value="14:00" />
+			<input id="time5" type="text" placeholder="Time 5" value="16:00" />
+		</div>
+
+		<button id="add-item-button" class="action-button">Add Item</button>
+		<div class="vertical flex" id="times-collection">
+		</div>
+		<button id="save-svg-button" class="action-button">Save SVG</button>
+	</div>
+
+	<script>
+		const offsetX = -48;
+		const offsetY = 0;
+		const width = 136;
+		const height = 91;
+
+		let svgTimes = document.getElementById("svg-times");
+		let divTimes = document.getElementById("times-collection");
+
+		function splitText(text){
+			let words = text.split(" ");
+			for (let i = 0, n = words.length-1; i < n; i++){
+				if (words[i].length + words[i+1].length < 14){
+					words[i] += " " + words[i+1];
+					words.splice(i+1, 1);
+					n--;
+					i--;
+				}
+			}
+			return words;
+		}
+
+		function newSvgTimeBlock(x, y, title, subtext, color){
+			let realX = offsetX+x*width;
+			let realY = offsetY+y*height;
+
+			let texts = splitText(title);
+
+			let i = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g transform="translate(${realX} ${realY})">
+						<rect class="gray" x="0" y="0" width="${(width + 6)}" height="${(height + 6)}" />
+						<rect class="sq-${color}" x="6" y="6" width="${(width - 6)}" height="${(height - 6)}" />
+						<text class="sq-text" y="${(39 - 8*texts.length)}" dy="0" text-anchor="middle" >
+							<tspan x="71" dy="16">` + texts.join(`</tspan>
+							<tspan x="71" dy="16">`) + `</tspan>
+						</text>
+						<text class="sq-subtext" x="71" y="76" text-anchor="middle">${subtext}</text>
+					</g></svg>`;
+			//svgTimes.innerHTML += i;
+			return new DOMParser().parseFromString(i, "image/svg+xml").firstChild.firstChild;
+			//return i;
+		}
+
+
+
+		function newTimeBlock(column, row){
+			let i = `<div class="times-item">
+						<input id="col" type="number" placeholder="Col" value="` + column + `">
+						<input id="row" type="number" placeholder="Row" value="` + row + `">
+						<input id="title" style="width: 200px" type="text" placeholder="Title">
+						<input id="subtitle" style="width: 100px" type="text" placeholder="Subtitle">
+						<select id="color">
+							<option class="color-gray" value="gray">Gray</option>
+							<option class="color-red" value="red">Red</option>
+							<option class="color-green" value="green">Green</option>
+							<option class="color-blue" value="blue">Blue</option>
+							<option class="color-yellow" value="yellow">Yellow</option>
+							<option class="color-pink" value="pink">Pink</option>
+						</select>
+						<button>-</button>
+					</div>`;
+			return new DOMParser().parseFromString(i, "text/html").body.firstChild
+		}
+
+		function changeSvgItemX(svg, x){ svg.setAttribute("transform", "translate(" + (offsetX+x*width) + " " + svg.transform.baseVal[0].matrix.f + ")"); }
+		function changeSvgItemY(svg, y){ svg.setAttribute("transform", "translate(" + svg.transform.baseVal[0].matrix.e + " " + (offsetY+y*height) + ")"); }
+		function changeSvgItemText(svg, text){
+			let texts = splitText(text);
+			svg.getElementsByClassName("sq-text")[0].innerHTML = `<tspan x="71" dy="16">` + texts.join(`</tspan><tspan x="71" dy="16">`) + `</tspan>`;
+			svg.getElementsByClassName("sq-text")[0].setAttribute("y", (39 - 8*texts.length));
+		}
+		function changeSvgItemSubtext(svg, subtext){ svg.getElementsByClassName("sq-subtext")[0].innerHTML = subtext; }
+		function changeSvgItemColor(svg, color){ svg.getElementsByTagName("rect")[1].className.baseVal = "sq-" + color; }
+
+		let added = 0;
+
+		function addTimeBlock(){
+			const column = 1 + Math.floor(added / 5);
+			const row = 1 + added % 5;
+			added += 1;
+			added %= 25;
+
+			let newDiv = newTimeBlock(column, row);	
+			let newSvg = newSvgTimeBlock(column, row, "Title", "Subtitle", "gray");
+
+			divTimes.appendChild(newDiv);
+			svgTimes.appendChild(newSvg);
+
+			let newSvgNode = svgTimes.children.item(svgTimes.children.length-1);
+
+			newDiv.children[0].addEventListener("input", (e)=>changeSvgItemX(newSvgNode, e.target.value));
+			newDiv.children[1].addEventListener("input", (e)=>changeSvgItemY(newSvgNode, e.target.value));
+			newDiv.children[2].addEventListener("input", (e)=>changeSvgItemText(newSvgNode, e.target.value));
+			newDiv.children[3].addEventListener("input", (e)=>changeSvgItemSubtext(newSvgNode, e.target.value));
+			newDiv.children[4].addEventListener("change", (e)=>changeSvgItemColor(newSvgNode, e.target.value));
+			newDiv.children[5].addEventListener("click", ()=>{
+				divTimes.removeChild(newDiv);
+				svgTimes.removeChild(newSvgNode);
+			});
+
+		}
+
+		function saveSvg(){
+			const data = document.getElementsByTagName("svg")[0].outerHTML;
+			const blob = new Blob([data], {type:"image/svg+xml;charset=utf-8"});
+			const url = URL.createObjectURL(blob);
+			const dl = document.createElement("a");
+			dl.href = url;
+			dl.download = "Timetable.svg";
+			document.body.appendChild(dl);
+			dl.click();
+			document.body.removeChild(dl);
+		}
+		
+		const changeSvgTimeLabels = (e)=>document.getElementById("svg-" + e.target.id).innerHTML = e.target.value;
+		[
+			"time1",
+		 	"time2",
+			"time3",
+			"time4",
+			"time5",
+			"dow1",
+			"dow2",
+			"dow3",
+			"dow4",
+			"dow5",
+			"ribbon"
+		].map((val)=>document.getElementById(val).addEventListener('input', changeSvgTimeLabels));
+
+		document.getElementById("add-item-button").addEventListener('click', addTimeBlock);
+
+		document.getElementById("save-svg-button").addEventListener('click', saveSvg);
+	</script>
+</body>
+</html>
