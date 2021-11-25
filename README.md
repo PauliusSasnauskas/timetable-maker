@@ -1,5 +1,7 @@
 # Timetable SVG Generator
 
+Try it out: https://pauliussasnauskas.github.io/timetable-maker/
+
 - Clone repo
 - Open `index.html`
 - Customize to your needs
